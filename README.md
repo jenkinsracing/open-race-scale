@@ -1,6 +1,6 @@
 # open-race-scale
 ### Open Source Racecar Scale  
-Four load cell scale controller for weighing cars using HX711 load cell module and Raspberry Pi platform. User interface will be via Bluetooth and smart phone app.
+Four load cell scale controller for weighing cars using HX711 load cell module and Raspberry Pi platform. User interface will be via Bluetooth and smart phone app. The overall cost target goal for a complete car weighing system is under $230, at least 75% cheaper than commerically available car scales.
   
 ### Roadmap  
 * Prototype electrical design as Raspberry Pi 3 Hat -> in progress  
