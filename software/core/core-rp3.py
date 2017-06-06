@@ -1,13 +1,11 @@
 import sys
 import time
 import RPi.GPIO as GPIO
-from loadcell import LoadCell
+from core.loadcell import LoadCell
 
 
-class ScaleControl:
+class ScaleData:
     def __init__(self):
-        self.load_cells = {'FL': LoadCell(4, 5), 'FR': LoadCell(4, 5), 'RL': LoadCell(4, 5), 'RR': LoadCell(4, 5)}
-
         self.total_weight = 0
 
         # front data
@@ -34,15 +32,21 @@ class ScaleControl:
         self.FR_RL_weight = 0
         self.FR_RL_percent = 0
 
+
+class ScaleControl:
+    def __init__(self):
+        self.load_cells = {'FL': LoadCell(4, 5), 'FR': LoadCell(4, 5), 'RL': LoadCell(4, 5), 'RR': LoadCell(4, 5)}
+        self.scale_data = ScaleData()
+
     def update(self):
         self._get_weights()
 
         # TODO do all weight and percentage calculations here
 
         print('FL: ' + str(self.load_cells['FL']),
-              'FR: ' + str(self.load_cells['FL']),
-              'RL: ' + str(self.load_cells['FL']),
-              'RR: ' + str(self.load_cells['FL']))
+              'FR: ' + str(self.load_cells['FR']),
+              'RL: ' + str(self.load_cells['RL']),
+              'RR: ' + str(self.load_cells['RR']))
 
     def _get_weights(self):
         for k, v in self.load_cells.items():
