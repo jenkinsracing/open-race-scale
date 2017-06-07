@@ -16,25 +16,62 @@ class ScaleMain(BoxLayout):
     def __init__(self, **kwargs):
         super(ScaleMain, self).__init__(orientation='vertical', **kwargs)
 
+        self.tx = Label(text='Open Race Scale', font_size=50)
+        self.add_widget(self.tx)
+        self.tx.size_hint_max_x = 80
+        self.tx.size_hint_y = .9
+        #self.tx.pos_hint = .1
 
-class ScaleDisplay(GridLayout):
+
+class HeaderDisplay(BoxLayout):
 
     def __init__(self, disps, **kwargs):
-        super(ScaleDisplay, self).__init__(**kwargs)
+        super(HeaderDisplay, self).__init__(orientation='horizontal', **kwargs)
+
+        disps.append(self.add_widget(WeightDisplayVertical(sc.scale_data['FLFR'])))
+        disps.append(self.add_widget(WeightDisplayHorizontal(sc.scale_data['FRRL'], 0)))
+
+
+class FooterDisplay(BoxLayout):
+
+    def __init__(self, disps, **kwargs):
+        super(FooterDisplay, self).__init__(orientation='horizontal', **kwargs)
+
+        disps.append(self.add_widget(WeightDisplayHorizontal(sc.scale_data['FRRL'], 0)))
+        disps.append(self.add_widget(WeightDisplayVertical(sc.scale_data['FLFR'])))
+
+
+class TotalDisplay(BoxLayout):
+    def __init__(self, disps, **kwargs):
+        super(TotalDisplay, self).__init__(orientation='horizontal', **kwargs)
+
+        disps.append(self.add_widget(WeightDisplayHorizontal(sc.scale_data['TOTAL'], 0)))
+
+
+class CornerDisplay(GridLayout):
+
+    def __init__(self, disps, **kwargs):
+        super(CornerDisplay, self).__init__(**kwargs)
         self.cols = 2
 
-        for disp in disps:
-            self.add_widget(disp)
+        # for disp in disps:
+        #     self.add_widget(disp)
+
+        disps.append(self.add_widget(WeightDisplayHorizontal(sc.scale_data['FL'], 0)))
+        disps.append(self.add_widget(WeightDisplayHorizontal(sc.scale_data['FR'], 1)))
+        disps.append(self.add_widget(WeightDisplayHorizontal(sc.scale_data['RL'], 0)))
+        disps.append(self.add_widget(WeightDisplayHorizontal(sc.scale_data['RR'], 1)))
 
 
-class WeightDisplay(GridLayout):
+class WeightDisplayHorizontal(GridLayout):
 
     def __init__(self, scale_data, pos, **kwargs):
-        super(WeightDisplay, self).__init__(**kwargs)
+        super(WeightDisplayHorizontal, self).__init__(**kwargs)
         self.cols = 2
 
         self._sd = scale_data
-        self.fl_id = Label(text=self._sd.id)
+        self.text = self._get_text_from_id(self._sd.id)
+        self.fl_id = Label(text=self.text)
         self.fl_wgt = Label(text='0')
         self.fl_pct = Label(text='0%')
 
@@ -54,8 +91,35 @@ class WeightDisplay(GridLayout):
 
     def get_data(self):
         # TODO read weight from bluetooth interface
-        self.fl_wgt.text = '{:.1f}'.format(self._sd.weight)
+        self.fl_wgt.text = '{:.1f}'.format(self._sd.weight) + ' Lbs'
         self.fl_pct.text = '{:.1f}%'.format(self._sd.percent)
+
+    def _get_text_from_id(self, identifier):
+        return sc.labels[identifier]
+
+
+class WeightDisplayVertical(GridLayout):
+    def __init__(self, scale_data, **kwargs):
+        super(WeightDisplayVertical, self).__init__(**kwargs)
+        self.rows = 3
+
+        self._sd = scale_data
+        self.text = self._get_text_from_id(self._sd.id)
+        self.fl_id = Label(text=self.text)
+        self.fl_wgt = Label(text='0')
+        self.fl_pct = Label(text='0%')
+
+        self.add_widget(self.fl_id)
+        self.add_widget(self.fl_wgt)
+        self.add_widget(self.fl_pct)
+
+    def get_data(self):
+        # TODO read weight from bluetooth interface
+        self.fl_wgt.text = '{:.1f}'.format(self._sd.weight) + ' Lbs'
+        self.fl_pct.text = '{:.1f}%'.format(self._sd.percent)
+
+    def _get_text_from_id(self, identifier):
+        return sc.labels[identifier]
 
 
 def update_disps(dt):
@@ -66,7 +130,8 @@ def update_disps(dt):
         sc.update()
 
     for disp in disps:
-        disp.get_data()
+        if disp is not None:
+            disp.get_data()
 
 
 class MyApp(App):
@@ -77,25 +142,21 @@ class MyApp(App):
             self.recv_stream, self.send_stream = get_socket_stream('orctest')
 
         m = ScaleMain()
-        m.add_widget(Label(text='Open Race Scale', font_size=50))
 
         global disps
         global sc
-        disps = [WeightDisplay(sc.scale_data['FL'], 0),
-                 WeightDisplay(sc.scale_data['FR'], 1),
-                 WeightDisplay(sc.scale_data['RL'], 0),
-                 WeightDisplay(sc.scale_data['RR'], 1),
-                 WeightDisplay(sc.scale_data['FLFR'], 1),
-                 WeightDisplay(sc.scale_data['RLRR'], 1),
-                 WeightDisplay(sc.scale_data['FLRR'], 1),
-                 WeightDisplay(sc.scale_data['FRRL'], 1),
-                 WeightDisplay(sc.scale_data['TOTAL'], 1)]
 
-        w = ScaleDisplay(disps)
+        h = HeaderDisplay(disps)
+        c = CornerDisplay(disps)
+        f = FooterDisplay(disps)
+        t = TotalDisplay(disps)
 
         event = Clock.schedule_interval(update_disps, 1)
 
-        m.add_widget(w)
+        m.add_widget(h)
+        m.add_widget(c)
+        m.add_widget(f)
+        m.add_widget(t)
         return m
 
     def send(self, cmd):
@@ -114,6 +175,6 @@ if __name__ == '__main__':
         from core.corerp3 import ScaleControl
         sc = ScaleControl(simulate=sim)
 
-    disps = None
+    disps = []
 
     MyApp().run()

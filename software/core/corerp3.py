@@ -22,6 +22,16 @@ class ScaleControl:
                            'FLRR': ScaleData('FLRR', calculated=True),
                            'FRRL': ScaleData('FRRL', calculated=True)}
 
+        self.labels = {'FL': 'FL',
+                       'FR': 'FR',
+                       'RL': 'RL',
+                       'RR': 'RR',
+                       'TOTAL': 'TOTAL',
+                       'FLFR': 'FRONT',
+                       'RLRR': 'REAR',
+                       'FLRR': 'FL to RR CROSS',
+                       'FRRL': 'FR to RL CROSS'}
+
     def update(self):
         # get weights from the load cell interface
         self._get_weights()
