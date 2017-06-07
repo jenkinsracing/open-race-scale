@@ -6,7 +6,7 @@ class LoadCell:
     def __init__(self, dout_pin, pd_sck_pin, driver=None, samples=20, spikes=4, sleep=0.1, simulate=False):
         self.simulate = simulate
 
-        self.ref_weight = 0
+        self.ref_unit = 6500  # TODO Calculate this with a calibrate routine
         self.units = None
         self.weight = 0
         self.samples = samples
@@ -23,7 +23,7 @@ class LoadCell:
         if not self.simulate:
             from core.hx711 import HX711
             self.driver = driver or HX711(dout_pin, pd_sck_pin)
-            self.driver.set_reference_unit(92)
+            self.driver.set_reference_unit(self.ref_unit)
 
             self.driver.reset()
             self.driver.tare()
