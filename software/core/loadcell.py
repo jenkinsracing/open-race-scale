@@ -4,8 +4,6 @@ import random
 
 class LoadCell:
     def __init__(self, dout_pin, pd_sck_pin, driver=None, samples=20, spikes=4, sleep=0.1, simulate=False):
-
-
         self.simulate = simulate
 
         self.ref_weight = 0
