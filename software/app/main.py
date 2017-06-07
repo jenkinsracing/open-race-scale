@@ -7,6 +7,9 @@ from kivy.uix.label import Label
 
 FLAVOR = 1  # 1 is local GUI, 0 is client GUI
 
+if not FLAVOR:
+    from app.btandroid import *
+
 
 class ScaleMain(BoxLayout):
 
@@ -69,6 +72,10 @@ def update_disps(dt):
 class MyApp(App):
 
     def build(self):
+
+        if not FLAVOR:
+            self.recv_stream, self.send_stream = get_socket_stream('orctest')
+
         m = ScaleMain()
         m.add_widget(Label(text='Open Race Scale', font_size=50))
 
@@ -82,6 +89,10 @@ class MyApp(App):
 
         m.add_widget(w)
         return m
+
+    def send(self, cmd):
+        self.send_stream.write('{}\n'.format(cmd))
+        self.send_stream.flush()
 
 
 if __name__ == '__main__':
