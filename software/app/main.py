@@ -54,8 +54,8 @@ class WeightDisplay(GridLayout):
 
     def get_data(self):
         # TODO read weight from bluetooth interface
-        self.fl_wgt.text = str(self._sd.weight)
-        self.fl_pct.text = str(self._sd.percent)
+        self.fl_wgt.text = '{:.1f}'.format(self._sd.weight)
+        self.fl_pct.text = '{:.1f}%'.format(self._sd.percent)
 
 
 def update_disps(dt):
@@ -81,7 +81,15 @@ class MyApp(App):
 
         global disps
         global sc
-        disps = [WeightDisplay(sc.scale_data['FL'], 0), WeightDisplay(sc.scale_data['FR'], 1), WeightDisplay(sc.scale_data['RL'], 0), WeightDisplay(sc.scale_data['RR'], 1), WeightDisplay(sc.scale_data['TOTAL'], 1)]
+        disps = [WeightDisplay(sc.scale_data['FL'], 0),
+                 WeightDisplay(sc.scale_data['FR'], 1),
+                 WeightDisplay(sc.scale_data['RL'], 0),
+                 WeightDisplay(sc.scale_data['RR'], 1),
+                 WeightDisplay(sc.scale_data['FLFR'], 1),
+                 WeightDisplay(sc.scale_data['RLRR'], 1),
+                 WeightDisplay(sc.scale_data['FLRR'], 1),
+                 WeightDisplay(sc.scale_data['FRRL'], 1),
+                 WeightDisplay(sc.scale_data['TOTAL'], 1)]
 
         w = ScaleDisplay(disps)
 
