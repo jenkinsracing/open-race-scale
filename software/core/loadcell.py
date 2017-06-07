@@ -1,10 +1,12 @@
 import statistics
-from hx711 import HX711
+import random
 
 
 class LoadCell:
-    def __init__(self, dout_pin, pd_sck_pin, driver=None, samples=20, spikes=4, sleep=0.1):
-        self.driver = driver or HX711(dout_pin, pd_sck_pin)
+    def __init__(self, dout_pin, pd_sck_pin, driver=None, samples=20, spikes=4, sleep=0.1, simulate=False):
+
+
+        self.simulate = simulate
 
         self.ref_weight = 0
         self.units = None
@@ -19,10 +21,14 @@ class LoadCell:
         # In this case, 92 is 1 gram because, with 1 as a reference unit I got numbers near 0 without any weight
         # and I got numbers around 184000 when I added 2kg. So, according to the rule of thirds:
         # If 2000 grams is 184000 then 1000 grams is 184000 / 2000 = 92.
-        self.driver.set_reference_unit(92)
 
-        self.driver.reset()
-        self.driver.tare()
+        if not self.simulate:
+            from core.hx711 import HX711
+            self.driver = driver or HX711(dout_pin, pd_sck_pin)
+            self.driver.set_reference_unit(92)
+
+            self.driver.reset()
+            self.driver.tare()
 
     # def get_weight(self, no_of_reads=3):
     #     self.weight = self.driver.get_weight(no_of_reads)
@@ -31,7 +37,10 @@ class LoadCell:
         return str(self.weight) + ' Lbs'
 
     def new_measure(self):
-        value = self.driver.get_weight()
+        if not self.simulate:
+            value = self.driver.get_weight()
+        else:
+            value = random.uniform(455, 450)
         self.history.append(value)
 
     def get_measure(self):

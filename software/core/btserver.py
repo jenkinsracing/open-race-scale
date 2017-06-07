@@ -6,6 +6,18 @@
 
 from bluetooth import *
 
+
+class Bluetooth:
+    """
+    FOR TESTING ONLY
+    """
+    def __init__(self):
+        self.test = 1
+
+    def send(self, data):
+        if self.test == 1:
+            print('sent: ', data)
+
 server_sock = BluetoothSocket(RFCOMM)
 server_sock.bind(("", PORT_ANY))
 server_sock.listen(1)
