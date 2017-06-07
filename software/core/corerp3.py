@@ -7,10 +7,10 @@ from core.scaledata import ScaleData
 class ScaleControl:
     def __init__(self, interface=None, simulate=False):
         self.interface = interface
-        self.load_cells = {'FL': LoadCell(4, 5, simulate=simulate),
-                           'FR': LoadCell(4, 5, simulate=simulate),
-                           'RL': LoadCell(4, 5, simulate=simulate),
-                           'RR': LoadCell(4, 5, simulate=simulate)}
+        self.load_cells = {'FL': LoadCell(17, 27, simulate=simulate),
+                           'FR': LoadCell(22, 23, simulate=simulate),
+                           'RL': LoadCell(5, 6, simulate=simulate),
+                           'RR': LoadCell(16, 26, simulate=simulate)}
 
         self.scale_data = {'FL': ScaleData('FL'),
                            'FR': ScaleData('FR'),
