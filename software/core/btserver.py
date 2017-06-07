@@ -7,48 +7,57 @@
 from bluetooth import *
 
 
-class Bluetooth:
+class BluetoothServer:
     """
-    FOR TESTING ONLY
+    CURRENTLY FOR TESTING ONLY
     """
     def __init__(self):
-        self.test = 1
+        self.server_socket = BluetoothSocket(RFCOMM)
+
+        self.server_socket.bind(("", PORT_ANY))
+        self.server_socket.listen(1)
+        self.port = self.server_socket.getsockname()[1]
+
+        self.uuid = "94f39d29-7d6d-437d-973b-fba39e49d4ee"
+
+        self.client_socket = None
+        self.client_info = None
+
+        self.advertise()
+
+    def advertise(self):
+        advertise_service(self.server_socket, "orctest",
+                          service_id=self.uuid,
+                          service_classes=[self.uuid, SERIAL_PORT_CLASS],
+                          profiles=[SERIAL_PORT_PROFILE],
+                          # protocols = [ OBEX_UUID ]
+                          )
+
+        print("Waiting for connection on RFCOMM channel %d" % self.port)
+
+        self.client_socket, self.client_info = self.server_socket.accept()
+        print("Accepted connection from ", self.client_info)
 
     def send(self, data):
-        if self.test == 1:
+        if data:
+            self.client_socket.send(len(data))
             print('sent: ', data)
 
-server_sock = BluetoothSocket(RFCOMM)
-server_sock.bind(("", PORT_ANY))
-server_sock.listen(1)
+    def recv(self):
+        try:
+            while True:
+                data = self.client_socket.recv(1024)
+                if len(data) == 0:
+                    break
+                print("received [%s]" % data)
+        except IOError:
+            pass
 
-port = server_sock.getsockname()[1]
+        self.disconnect()
 
-uuid = "94f39d29-7d6d-437d-973b-fba39e49d4ee"
+    def disconnect(self):
+        print("disconnected")
 
-advertise_service(server_sock, "SampleServer",
-                  service_id=uuid,
-                  service_classes=[uuid, SERIAL_PORT_CLASS],
-                  profiles=[SERIAL_PORT_PROFILE],
-                  # protocols = [ OBEX_UUID ]
-                  )
-
-print("Waiting for connection on RFCOMM channel %d" % port)
-
-client_sock, client_info = server_sock.accept()
-print("Accepted connection from ", client_info)
-
-try:
-    while True:
-        data = client_sock.recv(1024)
-        if len(data) == 0:
-            break
-        print("received [%s]" % data)
-except IOError:
-    pass
-
-print("disconnected")
-
-client_sock.close()
-server_sock.close()
-print("all done")
+        self.client_socket.close()
+        self.server_socket.close()
+        print("all done")
