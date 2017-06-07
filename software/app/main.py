@@ -5,6 +5,9 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 
 
+FLAVOR = 1  # 1 is local GUI, 0 is client GUI
+
+
 class ScaleMain(BoxLayout):
 
     def __init__(self, **kwargs):
@@ -23,13 +26,12 @@ class ScaleDisplay(GridLayout):
 
 class WeightDisplay(GridLayout):
 
-    def __init__(self, ident, pos, **kwargs):
+    def __init__(self, scale_data, pos, **kwargs):
         super(WeightDisplay, self).__init__(**kwargs)
         self.cols = 2
 
-        self._wgt = 0
-        self._pct = 0
-        self.fl_id = Label(text=ident)
+        self._sd = scale_data
+        self.fl_id = Label(text=self._sd.id)
         self.fl_wgt = Label(text='0')
         self.fl_pct = Label(text='0%')
 
@@ -47,17 +49,21 @@ class WeightDisplay(GridLayout):
 
             self.add_widget(self.fl_id)
 
-    def read_wgt(self):
+    def get_data(self):
         # TODO read weight from bluetooth interface
-        self._wgt += 1
-        self.fl_wgt.text = str(self._wgt)
-        self.fl_pct.text = '99%'
+        self.fl_wgt.text = str(self._sd.weight)
+        self.fl_pct.text = str(self._sd.percent)
 
 
-def read_wgts(dt):
+def update_disps(dt):
+    global sc
     global disps
+
+    if FLAVOR:
+        sc.update()
+
     for disp in disps:
-        disp.read_wgt()
+        disp.get_data()
 
 
 class MyApp(App):
@@ -67,16 +73,28 @@ class MyApp(App):
         m.add_widget(Label(text='Open Race Scale', font_size=50))
 
         global disps
-        disps = [WeightDisplay('FL', 0), WeightDisplay('FR', 1), WeightDisplay('RL', 0), WeightDisplay('RR', 1)]
+        global sc
+        disps = [WeightDisplay(sc.scale_data['FL'], 0), WeightDisplay(sc.scale_data['FR'], 1), WeightDisplay(sc.scale_data['RL'], 0), WeightDisplay(sc.scale_data['RR'], 1), WeightDisplay(sc.scale_data['TOTAL'], 1)]
 
         w = ScaleDisplay(disps)
 
-        event = Clock.schedule_interval(read_wgts, 1)
+        event = Clock.schedule_interval(update_disps, 1)
 
         m.add_widget(w)
         return m
 
 
 if __name__ == '__main__':
+    """
+    If the GUI is run locally as the main then the GUI will create a scale controller instead of just obtaining the data
+    via BT interface
+    """
+    sim = True  # change to True if not running on a RPi3
+
+    if FLAVOR:
+        from core.corerp3 import ScaleControl
+        sc = ScaleControl(simulate=sim)
+
     disps = None
+
     MyApp().run()
