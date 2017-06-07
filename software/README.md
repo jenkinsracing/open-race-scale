@@ -7,3 +7,7 @@ Notes: Both the core and the app can be run on a development PC for testing. See
   
 Core Dependencies: pybluez  
 App Dependencies: kivy, pygame, cython  
+  
+  
+Proof of Concept GUI with kivy:  
+![POC](https://github.com/jenkinsracing/open-race-scale/blob/master/software/poc-screenshot.png)
