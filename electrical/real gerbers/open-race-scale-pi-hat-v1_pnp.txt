@@ -1,0 +1,35 @@
+*Pick And Place List
+*Company=
+*Author=
+*eMail=
+*
+*Project=open-race-scale-pi-hat-v1
+*Date=19:01:10
+*CreatedBy=Fritzing 0.9.3b.04.19.5c895d327c44a3114e5fcc9d8260daf0cbb52806
+*
+*
+*Coordinates in mm, always center of component
+*Origin 0/0=Lower left corner of PCB
+*Rotation in degree (0-360, math. pos.)
+*
+*No;Value;Package;X;Y;Rotation;Side;Name
+1;;;11.2625;-33.9858;0;Bottom;P1
+2;;;11.2625;-36.5258;0;Bottom;P1
+3;;;42.8446;-28.1549;0;Bottom;Raspberry Pi 1
+4;;;8.7225;-33.9858;0;Bottom;P3
+5;;;31.9857;-3.49086;0;Bottom;TXT2
+6;;;12.6038;-31.4736;-90;Bottom;LC1
+7;;THT;12.8295;-9.34782;90;Bottom;FL
+8;;THT;50.9294;-9.34782;90;Bottom;RL
+9;;THT;31.8794;-9.34782;90;Bottom;FR
+10;;;73.5637;-31.4736;-90;Bottom;LC4
+11;;;8.7225;-36.5258;0;Bottom;P2
+12;;;3.88985;-52.5973;0;Bottom;Hole3
+13;;;61.8085;-52.6178;0;Bottom;Hole4
+14;;;61.7758;-3.50581;0;Bottom;Hole1
+15;;;53.2437;-31.4736;-90;Bottom;LC3
+16;;;11.2625;-31.4458;0;Bottom;P4
+17;;THT;71.2494;-9.34782;90;Bottom;RR
+18;;;3.98194;-3.6012;0;Bottom;Hole2
+19;;THT;7.4525;-47.9558;90;Bottom;J1
+20;;;32.9237;-31.4736;-90;Bottom;LC2
