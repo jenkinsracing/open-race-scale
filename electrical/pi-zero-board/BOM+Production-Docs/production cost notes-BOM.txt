@@ -23,7 +23,6 @@ Part      Value                      Device                     Package         
 SJ2                                  JUMPER-PAD-2-NC_BY_TRACE   PAD-JUMPER-2-NC_BY_TRACE_YES_SILK                                                          
                                                                                  
 xxU1        HX711                      HX711HX711                 SO16                           Kynix http://www.kynix.com/Detail/627064/HX711.html                                        IC-12445    HX711   
-U7        OSHW-LOGOS                 OSHW-LOGOS                 OSHW-LOGO-S                       Open Source Hardware Logo                                
 
 
 Per the v1r2 
@@ -31,12 +30,16 @@ parts kitted from Digikey for a single board (carriers) ors load cell amp #53133
 HX711 @ .40 each from Kynix http://www.kynix.com/Detail/627064/HX711.html
 pi gpio connector @1.50 ea from Adafruit  https://www.adafruit.com/product/2222 (pi zero needs 90* connector plus header pins)
 4 x carrier board @ .49 (panelized for 4 each per board) Seeed
-1 x main board   @ .49 each  Seeed
+1 x main board 2 layer  @ .49 each  Seeed
 
-produced carrier boards with main board ($43.29), no fab or shipping  (source less expensive pluggable blocks)
-produced main board with import carrier boards ($40.26)
+1 x main board 4 layer  @ 4.90 each  Seeed
 
-produced integrated main board approx $50 in 4 layer, slightly less than produced carrier boards in 2 layer
+plug terminals are the main pain point on pricing
+
+produced carrier boards with main board ($43.29 name brand terminals), ($21.09 import brand terminals) ($19.84 pin headers) no fab, stencil cost or shipping  (source less expensive pluggable blocks)
+produced main board with import carrier boards ($40.26 name brand terminals) ($18.06 import brand terminals) ($16.81 pin headers)  minimal through hole assembly
+
+produced integrated main board in 4 layer approx ($50 name brand terminals) ($27 import brand terminals) ($24 pin headers) no fab, stencil cost or shipping
 
 pi zero w @10 Adafruit
 pi 3 @39.95 Adafruit
