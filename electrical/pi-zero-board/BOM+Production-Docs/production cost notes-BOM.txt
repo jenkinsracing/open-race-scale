@@ -1,0 +1,42 @@
+BOM for open race scale pi zero board with and without carriers
+
+Partlist exported from /Users/dave/Documents/SparkFun_HX711_Load_Cell_v11/SparkFun_HX711_Load_Cell_v11.sch at 6/15/17 5:34 PM
+
+Part      Value                      Device                     Package                           Description                          PROD_ID     VALUE   
+4xC1        0.1uF                      0.1UF-25V-5%(0603)         0603-CAP                          CAP-08604                            CAP-08604   0.1uF   
+4xC2        0.1uF                      0.1UF-25V-5%(0603)         0603-CAP                          CAP-08604                            CAP-08604   0.1uF   
+4xC3        0.1uF                      0.1UF-25V-5%(0603)         0603-CAP                          CAP-08604                            CAP-08604   0.1uF   
+4xC4        0.1uF                      0.1UF-25V-5%(0603)         0603-CAP                          CAP-08604                            CAP-08604   0.1uF   
+4xC5        0.1uF                      0.1UF-25V-5%(0603)         0603-CAP                          CAP-08604                            CAP-08604   0.1uF   
+4xC6        10uF                       10UF50V20%(1210)           1210                              CAP-09824                            CAP-09824   10uF    
+4xC7        10uF                       10UF50V20%(1210)           1210                              CAP-09824                            CAP-09824   10uF    
+4xJ1                                   M05PTH                     1X05                              Header 5                                                 
+4xJP2                                  M02PTH                     1X02                              Standard 2-pin 0.1" header. Use with                     
+4xJP4                                  M05PTH                     1X05                              Header 5                                                 
+4xL1        3.3uH                      INDUCTOR0805-IND           0805                              Inductors                            NDUC-13076          
+4xQ1        MMBT4403                   TRANSISTOR_PNPMMBT4403     SOT23-3                           Generic PNP BJT                      TRANS-09245 MMBT4403
+4xR1        20k                        20KOHM1/10W1%(0603)        0603-RES                          RES-09383                            RES-09383   20k     
+4xR2        8.2K                       8.2KOHM-1/10W-5%(0603)     0603-RES                          RES-10646                            RES-10646           
+4xR3        100                        100OHM-1/10W-1%(0603)      0603-RES                          RES-07863                            RES-07863   100     
+4xR4        100                        100OHM-1/10W-1%(0603)      0603-RES                          RES-07863                            RES-07863   100     
+4xR5        10K                        10KOHM-1/10W-1%(0603)0603  0603-RES                          RES-00824                            RES-00824   10K     
+SJ2                                  JUMPER-PAD-2-NC_BY_TRACE   PAD-JUMPER-2-NC_BY_TRACE_YES_SILK                                                          
+                                                                                 
+xxU1        HX711                      HX711HX711                 SO16                           Kynix http://www.kynix.com/Detail/627064/HX711.html                                        IC-12445    HX711   
+U7        OSHW-LOGOS                 OSHW-LOGOS                 OSHW-LOGO-S                       Open Source Hardware Logo                                
+
+
+Per the v1r2 
+parts kitted from Digikey for a single board (carriers) ors load cell amp #5313337 $11.03
+HX711 @ .40 each from Kynix http://www.kynix.com/Detail/627064/HX711.html
+pi gpio connector @1.50 ea from Adafruit  https://www.adafruit.com/product/2222 (pi zero needs 90* connector plus header pins)
+4 x carrier board @ .49 (panelized for 4 each per board) Seeed
+1 x main board   @ .49 each  Seeed
+
+produced carrier boards with main board ($43.29), no fab or shipping  (source less expensive pluggable blocks)
+produced main board with import carrier boards ($40.26)
+
+produced integrated main board approx $50 in 4 layer, slightly less than produced carrier boards in 2 layer
+
+pi zero w @10 Adafruit
+pi 3 @39.95 Adafruit
