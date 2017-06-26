@@ -25,14 +25,14 @@ SJ2                                  JUMPER-PAD-2-NC_BY_TRACE   PAD-JUMPER-2-NC_
 xxU1        HX711                      HX711HX711                 SO16                           Kynix http://www.kynix.com/Detail/627064/HX711.html                                        IC-12445    HX711   
 
 
-Per the v1r2 
+Per the v1r2 board
 parts kitted from Digikey for a single board (carriers) ors load cell amp #5313337 $11.03
 HX711 @ .40 each from Kynix http://www.kynix.com/Detail/627064/HX711.html
 pi gpio connector @1.50 ea from Adafruit  https://www.adafruit.com/product/2222 (pi zero needs 90* connector plus header pins)
-4 x carrier board @ .49 (panelized for 4 each per board) Seeed
-1 x main board 2 layer  @ .49 each  Seeed
+4 x carrier board prototype @ .49 (panelized for 4 each per board) Seeed
+1 x main board 2 layer prototype @ .49 each  Seeed
 
-1 x main board 4 layer  @ 4.90 each  Seeed
+1 x main board 4 layer  @ 4.90 each  Seeed (we can cut that down with higher qty and another vendor approx $2.50 in 100 ql1ty
 
 plug terminals are the main pain point on pricing
 
@@ -43,3 +43,8 @@ produced integrated main board in 4 layer approx ($50 name brand terminals) ($27
 
 pi zero w @10 Adafruit
 pi 3 @39.95 Adafruit
+
+pcba quotes
+
+seeed  US$374.00 plus shipping for 100 carriers per sparkfun spec not panelized (not confirmed, no cost for hx711 and C5,C6, perhaps US$100 more)
+bitelle/7pcb  US$642.27 plus shipping  for 100 carriers per sparkfun spec not panelized (not confirmed, no cost for hx711 yet)
