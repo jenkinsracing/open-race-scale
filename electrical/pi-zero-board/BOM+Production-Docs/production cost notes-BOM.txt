@@ -46,5 +46,13 @@ pi 3 @39.95 Adafruit
 
 pcba quotes
 
+carriers
 seeed  US$374.00 plus shipping for 100 carriers per sparkfun spec not panelized (not confirmed, no cost for hx711 and C5,C6, perhaps US$100 more)
 bitelle/7pcb  US$642.27 plus shipping  for 100 carriers per sparkfun spec not panelized (not confirmed, no cost for hx711 yet)
+
+integrated board
+seeed need to finish gerber for quote
+bitelle/7pcb  estimate US$ 452.76 plus shipping for 10 prototype no connectors and cost TBA on hx711.  Add US$200 for production quality.
+
+
+bitelle/7pcb  estimate US$ 350.00 plus shipping for 5 prototype no connectors and cost TBA on hx711.  
