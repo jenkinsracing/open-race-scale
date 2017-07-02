@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="5" altunitdist="mil" altunit="mil"/>
+<grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -167,10 +167,40 @@
 </layers>
 <board>
 <plain>
-<wire x1="-6.35" y1="40.64" x2="90.15" y2="40.64" width="0" layer="20"/>
-<wire x1="90.15" y1="40.64" x2="90.15" y2="86.03" width="0" layer="20"/>
+<wire x1="-6.35" y1="39.37" x2="90.15" y2="39.37" width="0" layer="20"/>
+<wire x1="90.15" y1="39.37" x2="90.15" y2="86.03" width="0" layer="20"/>
 <wire x1="90.15" y1="86.03" x2="-6.35" y2="86.03" width="0" layer="20"/>
-<wire x1="-6.35" y1="86.03" x2="-6.35" y2="40.64" width="0" layer="20"/>
+<wire x1="-6.35" y1="86.03" x2="-6.35" y2="39.37" width="0" layer="20"/>
+<text x="7.62" y="44.45" size="1.27" layer="21" align="center">S+</text>
+<text x="10.16" y="44.45" size="1.27" layer="21" align="center">S-</text>
+<text x="12.7" y="44.45" size="1.27" layer="21" align="center">E-</text>
+<text x="15.24" y="44.45" size="1.27" layer="21" align="center">E+</text>
+<text x="17.78" y="44.45" size="1.016" layer="21" align="center">B-</text>
+<text x="20.32" y="44.45" size="1.016" layer="21" align="center">B+</text>
+<text x="82.55" y="64.77" size="1.27" layer="21" rot="R90" align="center">Open Race Scale</text>
+<text x="85.09" y="64.77" size="0.4064" layer="21" rot="R90" align="center">https://github.com/RoaddogLabs/open-race-scale</text>
+<text x="27.94" y="44.45" size="1.27" layer="21" align="center">S+</text>
+<text x="30.48" y="44.45" size="1.27" layer="21" align="center">S-</text>
+<text x="33.02" y="44.45" size="1.27" layer="21" align="center">E-</text>
+<text x="38.1" y="44.45" size="1.016" layer="21" align="center">B-</text>
+<text x="35.56" y="44.45" size="1.27" layer="21" align="center">E+</text>
+<text x="40.64" y="44.45" size="1.016" layer="21" align="center">B+</text>
+<text x="12.7" y="41.91" size="1.6764" layer="21" align="center">Left Front</text>
+<text x="33.02" y="41.91" size="1.6764" layer="21" align="center">Right Front</text>
+<text x="52.07" y="41.91" size="1.6764" layer="21" align="center">Left Rear</text>
+<text x="69.85" y="41.91" size="1.6764" layer="21" align="center">Right Rear</text>
+<text x="46.99" y="44.45" size="1.27" layer="21" align="center">S+</text>
+<text x="49.53" y="44.45" size="1.27" layer="21" align="center">S-</text>
+<text x="52.07" y="44.45" size="1.27" layer="21" align="center">E-</text>
+<text x="54.61" y="44.45" size="1.27" layer="21" align="center">E+</text>
+<text x="57.15" y="44.45" size="1.016" layer="21" align="center">B-</text>
+<text x="59.69" y="44.45" size="1.016" layer="21" align="center">B+</text>
+<text x="66.04" y="44.45" size="1.27" layer="21" align="center">S+</text>
+<text x="68.58" y="44.45" size="1.27" layer="21" align="center">S-</text>
+<text x="71.12" y="44.45" size="1.27" layer="21" align="center">E-</text>
+<text x="73.66" y="44.45" size="1.27" layer="21" align="center">E+</text>
+<text x="76.2" y="44.45" size="1.016" layer="21" align="center">B-</text>
+<text x="78.74" y="44.45" size="1.016" layer="21" align="center">B+</text>
 </plain>
 <libraries>
 <library name="SparkFun-Capacitors">
@@ -1032,10 +1062,10 @@ design rules under a new name.</description>
 <element name="U4" library="Testing" package="SO16" value="HX711" x="71.12" y="62.23" rot="R270">
 <attribute name="PROD_ID" value="IC-12445" x="71.12" y="62.23" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="H1" library="holes" package="3,3" value="MOUNT-HOLE3.3" x="-1.27" y="45.72"/>
+<element name="H1" library="holes" package="3,3" value="MOUNT-HOLE3.3" x="-1.27" y="44.45"/>
 <element name="H2" library="holes" package="3,3" value="MOUNT-HOLE3.3" x="-1.27" y="81.28"/>
 <element name="H3" library="holes" package="3,3" value="MOUNT-HOLE3.3" x="85.09" y="81.28"/>
-<element name="H4" library="holes" package="3,3" value="MOUNT-HOLE3.3" x="85.09" y="45.72"/>
+<element name="H4" library="holes" package="3,3" value="MOUNT-HOLE3.3" x="85.09" y="44.45"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -2099,7 +2129,7 @@ design rules under a new name.</description>
 <wire x1="73.6092" y1="47.0916" x2="73.66" y2="46.99" width="0.1524" layer="1"/>
 <wire x1="63.8556" y1="65.9892" x2="63.87" y2="66.04" width="0.1524" layer="1"/>
 </signal>
-<signal name="N$8">
+<signal name="B+4">
 <contactref element="U4" pad="10"/>
 <contactref element="JP7" pad="1"/>
 <wire x1="73.3044" y1="58.3692" x2="73.914" y2="58.9788" width="0.1524" layer="1"/>
@@ -2110,7 +2140,7 @@ design rules under a new name.</description>
 <wire x1="76.2" y1="46.99" x2="76.2" y2="53.9496" width="0.1524" layer="1"/>
 <wire x1="73.914" y1="58.9788" x2="73.92" y2="59.055" width="0.1524" layer="1"/>
 </signal>
-<signal name="N$11">
+<signal name="B+1">
 <contactref element="U3" pad="10"/>
 <contactref element="JP5" pad="1"/>
 <wire x1="17.6784" y1="58.2168" x2="16.9164" y2="58.9788" width="0.1524" layer="1"/>
@@ -2118,7 +2148,7 @@ design rules under a new name.</description>
 <wire x1="16.9164" y1="58.9788" x2="16.77" y2="59.055" width="0.1524" layer="1"/>
 <wire x1="17.6784" y1="47.0916" x2="17.78" y2="46.99" width="0.1524" layer="1"/>
 </signal>
-<signal name="N$12">
+<signal name="B-1">
 <contactref element="JP5" pad="2"/>
 <contactref element="U3" pad="9"/>
 <wire x1="16.764" y1="47.7012" x2="16.764" y2="57.7596" width="0.1524" layer="1"/>
@@ -2129,7 +2159,7 @@ design rules under a new name.</description>
 <wire x1="20.32" y1="46.99" x2="19.05" y2="45.72" width="0.1524" layer="1"/>
 <wire x1="16.764" y1="57.7596" x2="16.77" y2="57.785" width="0.1524" layer="1"/>
 </signal>
-<signal name="N$13">
+<signal name="B-4">
 <contactref element="JP7" pad="2"/>
 <contactref element="U4" pad="9"/>
 <wire x1="74.0664" y1="56.5404" x2="74.0664" y2="57.7596" width="0.1524" layer="1"/>
@@ -2138,14 +2168,14 @@ design rules under a new name.</description>
 <wire x1="74.0664" y1="57.7596" x2="73.92" y2="57.785" width="0.1524" layer="1"/>
 <wire x1="78.6384" y1="47.0916" x2="78.74" y2="46.99" width="0.1524" layer="1"/>
 </signal>
-<signal name="N$14">
+<signal name="B+2">
 <contactref element="JP1" pad="1"/>
 <contactref element="U2" pad="10"/>
 <wire x1="38.1" y1="56.8452" x2="35.9664" y2="58.9788" width="0.1524" layer="1"/>
 <wire x1="38.1" y1="46.99" x2="38.1" y2="56.8452" width="0.1524" layer="1"/>
 <wire x1="35.9664" y1="58.9788" x2="35.82" y2="59.055" width="0.1524" layer="1"/>
 </signal>
-<signal name="N$15">
+<signal name="B-2">
 <contactref element="JP1" pad="2"/>
 <contactref element="U2" pad="9"/>
 <wire x1="35.9664" y1="48.3108" x2="35.9664" y2="57.7596" width="0.1524" layer="1"/>

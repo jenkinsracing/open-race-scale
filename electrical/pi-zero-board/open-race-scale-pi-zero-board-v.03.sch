@@ -5254,7 +5254,7 @@ shorted to VCC.</text>
 <wire x1="25.4" y1="-53.34" x2="33.02" y2="-53.34" width="0.2032" layer="91"/>
 </segment>
 </net>
-<net name="N$8" class="0">
+<net name="B+4" class="0">
 <segment>
 <pinref part="U4" gate="U1" pin="INB+"/>
 <wire x1="106.68" y1="-83.82" x2="121.92" y2="-83.82" width="0.1524" layer="91"/>
@@ -5262,9 +5262,10 @@ shorted to VCC.</text>
 <wire x1="121.92" y1="-119.38" x2="-7.62" y2="-119.38" width="0.1524" layer="91"/>
 <pinref part="JP7" gate="G$1" pin="1"/>
 <wire x1="-7.62" y1="-119.38" x2="-7.62" y2="-78.74" width="0.1524" layer="91"/>
+<label x="-2.54" y="-81.28" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
-<net name="N$11" class="0">
+<net name="B+1" class="0">
 <segment>
 <pinref part="U3" gate="U1" pin="INB+"/>
 <wire x1="86.36" y1="274.32" x2="99.06" y2="274.32" width="0.1524" layer="91"/>
@@ -5272,9 +5273,10 @@ shorted to VCC.</text>
 <wire x1="99.06" y1="236.22" x2="-27.94" y2="236.22" width="0.1524" layer="91"/>
 <pinref part="JP5" gate="G$1" pin="1"/>
 <wire x1="-27.94" y1="236.22" x2="-27.94" y2="279.4" width="0.1524" layer="91"/>
+<label x="-27.94" y="274.32" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
-<net name="N$12" class="0">
+<net name="B-1" class="0">
 <segment>
 <pinref part="JP5" gate="G$1" pin="2"/>
 <wire x1="-27.94" y1="281.94" x2="-20.32" y2="281.94" width="0.1524" layer="91"/>
@@ -5282,9 +5284,10 @@ shorted to VCC.</text>
 <wire x1="-20.32" y1="243.84" x2="86.36" y2="243.84" width="0.1524" layer="91"/>
 <pinref part="U3" gate="U1" pin="INB-"/>
 <wire x1="86.36" y1="243.84" x2="86.36" y2="269.24" width="0.1524" layer="91"/>
+<label x="-22.86" y="281.94" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="N$13" class="0">
+<net name="B-4" class="0">
 <segment>
 <pinref part="JP7" gate="G$1" pin="2"/>
 <wire x1="-7.62" y1="-76.2" x2="0" y2="-76.2" width="0.1524" layer="91"/>
@@ -5292,9 +5295,10 @@ shorted to VCC.</text>
 <wire x1="0" y1="-111.76" x2="106.68" y2="-111.76" width="0.1524" layer="91"/>
 <pinref part="U4" gate="U1" pin="INB-"/>
 <wire x1="106.68" y1="-111.76" x2="106.68" y2="-88.9" width="0.1524" layer="91"/>
+<label x="0" y="-73.66" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
-<net name="N$14" class="0">
+<net name="B+2" class="0">
 <segment>
 <pinref part="JP1" gate="G$1" pin="1"/>
 <wire x1="-22.86" y1="175.26" x2="-22.86" y2="129.54" width="0.1524" layer="91"/>
@@ -5302,9 +5306,10 @@ shorted to VCC.</text>
 <wire x1="104.14" y1="129.54" x2="104.14" y2="170.18" width="0.1524" layer="91"/>
 <pinref part="U2" gate="U1" pin="INB+"/>
 <wire x1="104.14" y1="170.18" x2="91.44" y2="170.18" width="0.1524" layer="91"/>
+<label x="-17.78" y="175.26" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
-<net name="N$15" class="0">
+<net name="B-2" class="0">
 <segment>
 <pinref part="JP1" gate="G$1" pin="2"/>
 <wire x1="-22.86" y1="177.8" x2="-15.24" y2="177.8" width="0.1524" layer="91"/>
@@ -5312,6 +5317,7 @@ shorted to VCC.</text>
 <wire x1="-15.24" y1="139.7" x2="91.44" y2="139.7" width="0.1524" layer="91"/>
 <pinref part="U2" gate="U1" pin="INB-"/>
 <wire x1="91.44" y1="139.7" x2="91.44" y2="165.1" width="0.1524" layer="91"/>
+<label x="-15.24" y="180.34" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 </nets>
@@ -5319,10 +5325,13 @@ shorted to VCC.</text>
 </sheets>
 <errors>
 <approved hash="113,1,-18.4573,50.9947,JP2,,,,,"/>
+<approved hash="113,1,117.517,71.1877,SJ2,,,,,"/>
 <approved hash="113,1,-18.4573,70.0447,JP4,,,,,"/>
 <approved hash="113,1,-26.0773,177.995,JP1,,,,,"/>
+<approved hash="113,1,107.357,198.188,SJ1,,,,,"/>
 <approved hash="113,1,-26.0773,197.045,JP3,,,,,"/>
 <approved hash="113,1,-31.1573,282.135,JP5,,,,,"/>
+<approved hash="113,1,102.277,302.328,SJ3,,,,,"/>
 <approved hash="113,1,-31.1573,301.185,JP6,,,,,"/>
 <approved hash="113,1,-10.8373,-76.0053,JP7,,,,,"/>
 <approved hash="113,1,130.217,-58.3523,SJ4,,,,,"/>
