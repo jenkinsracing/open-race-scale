@@ -1,8 +1,8 @@
-#### Open Race Scale Pi Zero based control board
+### Open Race Scale Pi Zero based control board
 
 ***THIS BOARD IS NOT YET VALIDATED***
 
-This is an early release version of the integrated control board.  It is not yet ready for production or prototype boards.
+This is an early release version of the integrated control board.  It is not yet ready for production.  It has passed Eagle ERC and DRC for Seeed Fusion PCB.
 
 Forked from https://github.com/jenkinsracing/open-race-scale by Andrew Jenkins no license listed
 
