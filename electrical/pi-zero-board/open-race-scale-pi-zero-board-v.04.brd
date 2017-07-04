@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
+<grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -1294,6 +1294,12 @@ design rules under a new name.</description>
 <wire x1="76.2" y1="58.42" x2="75.8698" y2="63.3222" width="0.1524" layer="1"/>
 <wire x1="43.18" y1="76.2" x2="43.6" y2="76.197840625" width="0.1524" layer="16"/>
 <wire x1="43.6" y1="76.197840625" x2="44.87" y2="76.2" width="0.1524" layer="1"/>
+<polygon width="0.1524" layer="16" isolate="0.4064">
+<vertex x="-6.35" y="85.09"/>
+<vertex x="90.17" y="85.09"/>
+<vertex x="90.17" y="39.37"/>
+<vertex x="-6.35" y="39.37"/>
+</polygon>
 </signal>
 <signal name="VCC">
 <contactref element="U1" pad="1"/>
