@@ -1,4 +1,5 @@
 from kivy.app import App
+from kivy.logger import Logger
 from kivy.clock import Clock
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
@@ -133,9 +134,13 @@ def update_disps(dt):
             v.widget.get_data()
 
 
-class MyApp(App):
+class OSRApp(App):
+    # icon = TODO make app icon
+    title = 'Open Race Scale V0.1 Build 5'
 
     def build(self):
+
+        title = 'Basic Application'
 
         if not FLAVOR:
             self.recv_stream, self.send_stream = get_socket_stream('orctest')
@@ -157,6 +162,20 @@ class MyApp(App):
         r.add_widget(t)
         return r
 
+    def on_start(self):
+        Logger.info('App: Started')
+
+    def on_stop(self):
+        Logger.info('App: Stopped')
+
+    def on_pause(self):
+        Logger.info('App: Paused')
+        return True
+
+    def on_resume(self):
+        Logger.info('App: Resumed')
+        pass
+
     def send(self, cmd):
         self.send_stream.write('{}\n'.format(cmd))
         self.send_stream.flush()
@@ -173,6 +192,6 @@ if __name__ == '__main__':
         from core.corerp3 import ScaleControl
         sc = ScaleControl(simulate=sim)
 
-    MyApp().run()
+    OSRApp().run()
 
 
