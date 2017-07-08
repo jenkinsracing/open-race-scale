@@ -8,4 +8,5 @@ class ScaleData:
         self.units = 'Lbs'
         self.weight = 0
         self.percent = 0
+        self.widget = None
 
