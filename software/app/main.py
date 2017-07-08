@@ -25,42 +25,39 @@ class ScaleMain(BoxLayout):
 
 class HeaderDisplay(BoxLayout):
 
-    def __init__(self, disps, **kwargs):
+    def __init__(self, **kwargs):
         super(HeaderDisplay, self).__init__(orientation='horizontal', **kwargs)
 
-        disps.append(self.add_widget(WeightDisplayVertical(sc.scale_data['FLFR'])))
-        disps.append(self.add_widget(WeightDisplayHorizontal(sc.scale_data['FRRL'], 0)))
+        self.add_widget(WeightDisplayVertical(sc.scale_data['FLFR']))
+        self.add_widget(WeightDisplayVertical(sc.scale_data['FRRL']))
 
 
 class FooterDisplay(BoxLayout):
 
-    def __init__(self, disps, **kwargs):
+    def __init__(self, **kwargs):
         super(FooterDisplay, self).__init__(orientation='horizontal', **kwargs)
 
-        disps.append(self.add_widget(WeightDisplayHorizontal(sc.scale_data['FRRL'], 0)))
-        disps.append(self.add_widget(WeightDisplayVertical(sc.scale_data['FLFR'])))
+        self.add_widget(WeightDisplayVertical(sc.scale_data['RLRR']))
+        self.add_widget(WeightDisplayVertical(sc.scale_data['FLRR']))
 
 
 class TotalDisplay(BoxLayout):
-    def __init__(self, disps, **kwargs):
+    def __init__(self, **kwargs):
         super(TotalDisplay, self).__init__(orientation='horizontal', **kwargs)
 
-        disps.append(self.add_widget(WeightDisplayHorizontal(sc.scale_data['TOTAL'], 0)))
+        self.add_widget(WeightDisplayVertical(sc.scale_data['TOTAL']))
 
 
 class CornerDisplay(GridLayout):
 
-    def __init__(self, disps, **kwargs):
+    def __init__(self, **kwargs):
         super(CornerDisplay, self).__init__(**kwargs)
         self.cols = 2
 
-        # for disp in disps:
-        #     self.add_widget(disp)
-
-        disps.append(self.add_widget(WeightDisplayHorizontal(sc.scale_data['FL'], 0)))
-        disps.append(self.add_widget(WeightDisplayHorizontal(sc.scale_data['FR'], 1)))
-        disps.append(self.add_widget(WeightDisplayHorizontal(sc.scale_data['RL'], 0)))
-        disps.append(self.add_widget(WeightDisplayHorizontal(sc.scale_data['RR'], 1)))
+        self.add_widget(WeightDisplayHorizontal(sc.scale_data['FL'], 0))
+        self.add_widget(WeightDisplayHorizontal(sc.scale_data['FR'], 1))
+        self.add_widget(WeightDisplayHorizontal(sc.scale_data['RL'], 0))
+        self.add_widget(WeightDisplayHorizontal(sc.scale_data['RR'], 1))
 
 
 class WeightDisplayHorizontal(GridLayout):
@@ -70,6 +67,7 @@ class WeightDisplayHorizontal(GridLayout):
         self.cols = 2
 
         self._sd = scale_data
+        self._sd.widget = self  # keep track of the widget for this scale data
         self.text = self._get_text_from_id(self._sd.id)
         self.fl_id = Label(text=self.text)
         self.fl_wgt = Label(text='0')
@@ -104,6 +102,7 @@ class WeightDisplayVertical(GridLayout):
         self.rows = 3
 
         self._sd = scale_data
+        self._sd.widget = self  # keep track of the widget for this scale data
         self.text = self._get_text_from_id(self._sd.id)
         self.fl_id = Label(text=self.text)
         self.fl_wgt = Label(text='0')
@@ -124,14 +123,14 @@ class WeightDisplayVertical(GridLayout):
 
 def update_disps(dt):
     global sc
-    global disps
 
     if FLAVOR:
         sc.update()
 
-    for disp in disps:
-        if disp is not None:
-            disp.get_data()
+    # update all display widgets
+    for k, v in sc.scale_data.items():
+        if v.widget is not None:
+            v.widget.get_data()
 
 
 class MyApp(App):
@@ -141,23 +140,22 @@ class MyApp(App):
         if not FLAVOR:
             self.recv_stream, self.send_stream = get_socket_stream('orctest')
 
-        m = ScaleMain()
+        r = ScaleMain()
 
-        global disps
         global sc
 
-        h = HeaderDisplay(disps)
-        c = CornerDisplay(disps)
-        f = FooterDisplay(disps)
-        t = TotalDisplay(disps)
+        h = HeaderDisplay()
+        c = CornerDisplay()
+        f = FooterDisplay()
+        t = TotalDisplay()
 
         event = Clock.schedule_interval(update_disps, 1)
 
-        m.add_widget(h)
-        m.add_widget(c)
-        m.add_widget(f)
-        m.add_widget(t)
-        return m
+        r.add_widget(h)
+        r.add_widget(c)
+        r.add_widget(f)
+        r.add_widget(t)
+        return r
 
     def send(self, cmd):
         self.send_stream.write('{}\n'.format(cmd))
@@ -175,6 +173,6 @@ if __name__ == '__main__':
         from core.corerp3 import ScaleControl
         sc = ScaleControl(simulate=sim)
 
-    disps = []
-
     MyApp().run()
+
+
