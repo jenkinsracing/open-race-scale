@@ -5,6 +5,8 @@ The software is currently designed in two parts.
   
 Notes: Both the core and the app can be run on a development PC for testing. See the doc strings in the code for details.  
   
+Python 3.x REQUIRED  
+  
 Core Dependencies: pybluez  
 App Dependencies: kivy, pygame, cython  
   
